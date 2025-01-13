@@ -1,11 +1,11 @@
 {
   "name": "@fcrozatier/bump",
+  "version": "0.0.3",
   "license": "MIT",
   "tasks": {
     "bump": "deno run --allow-read --allow-write --allow-run index.ts"
   },
   "exports": "./index.js",
-  "version": "0.0.3",
   "imports": {
     "@std/assert": "jsr:@std/assert@^1.0.10"
   }
