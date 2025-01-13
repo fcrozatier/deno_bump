@@ -3,8 +3,7 @@
   "version": "0.0.4",
   "license": "MIT",
   "tasks": {
-    "bump": "deno run --allow-read --allow-write --allow-run index.ts",
-    "bump:remote": "deno run jsr:@fcrozatier/bump"
+    "bump": "deno run --allow-read --allow-write --allow-run jsr:@fcrozatier/bump"
   },
   "exports": "./index.ts",
   "imports": {
