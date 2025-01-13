@@ -1,13 +1,18 @@
+interface Context {
+  readConfig: () => string;
+  writeConfig: (data: string) => void;
+}
+
 const configPath = "./deno.json";
 
 /**
  * Bumps the deno.json "version" field using semver
  */
-export const updateVersion = (type: string, context = {
+export const updateVersion = (type: string, context: Context = {
   readConfig: () => Deno.readTextFileSync(configPath),
   writeConfig: (data: string) =>
     Deno.writeTextFileSync(configPath, JSON.stringify(data, null, 2)),
-}) => {
+}): string => {
   const text = context.readConfig();
   const json = JSON.parse(text);
   const version = json["version"] || "0.0.0";
