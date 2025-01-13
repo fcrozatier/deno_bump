@@ -4,13 +4,13 @@ Bumps the `deno.json` "version" field using semver, then commit all files with t
 
 ## Usage
 
-Add the following `task` to your `deno.json`:
+Add the following `task`s to your `deno.json`:
 
 ```json
 {
-  ...
   "task": {
     "bump": "deno run --allow-read --allow-write --allow-run jsr:@fcrozatier/bump",
+    "publish": "deno publish && git push --follow-tags"
   }
 }
 ```
