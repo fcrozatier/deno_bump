@@ -1,15 +1,18 @@
+const configPath = "./deno.json";
+
 /**
  * Bumps the deno.json "version" field using semver
  */
-
-const configPath = "./deno.json";
-
-const updateVersion = (type: string) => {
-  const text = Deno.readTextFileSync(configPath);
+export const updateVersion = (type: string, context = {
+  readConfig: () => Deno.readTextFileSync(configPath),
+  writeConfig: (data: string) =>
+    Deno.writeTextFileSync(configPath, JSON.stringify(data, null, 2)),
+}) => {
+  const text = context.readConfig();
   const json = JSON.parse(text);
   const version = json["version"] || "0.0.0";
 
-  const [major, minor, patch]: number[] = version.split(".").map(Number.parseInt);
+  const [major, minor, patch]: number[] = version.split(".").map(Number);
 
   let newVersion: string;
 
@@ -32,7 +35,7 @@ const updateVersion = (type: string) => {
 
   json["version"] = newVersion;
 
-  Deno.writeTextFileSync(configPath, JSON.stringify(json, null, 2));
+  context.writeConfig(json);
 
   console.log(`version updated ${version} -> ${newVersion}`);
   return newVersion;
