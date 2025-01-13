@@ -1,0 +1,9 @@
+{
+  "name": "@fcrozatier/bump",
+  "license": "MIT",
+  "tasks": {
+    "bump": "deno run --allow-read --allow-write --allow-run index.ts"
+  },
+  "exports": "./index.js",
+  "version": "0.NaN.1"
+}
