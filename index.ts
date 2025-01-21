@@ -64,7 +64,7 @@ const runCommand = async (command: string[]) => {
 const commitAndTag = async (version: string) => {
   await runCommand(["git", "add", "."]);
   await runCommand(["git", "commit", "-m", `v${version}`]);
-  await runCommand(["git", "tag", `v${version}`]);
+  await runCommand(["git", "tag", "-a", `v${version}`, "-m", `Release v${version}`]);
 
   console.log(`Git commit and tag created: v${version} `);
 };
